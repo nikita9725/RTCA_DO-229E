@@ -8,6 +8,7 @@ from calc_funcs import (
 from const import InputData
 
 current_day = current_day_count(InputData.observation_timestamp)
+print(f'Текуший день в году: {current_day}\n')
 
 # Расчитанные метрологические параметры
 calculated_mp = get_calculated_metrological_params(current_day)
@@ -24,5 +25,3 @@ print(tropospheric_correction)
 # Среднеквадратическое отклонение
 square_deviation = get_square_deviation(m_elevation)
 print(square_deviation)
-
-
