@@ -39,7 +39,9 @@ def current_day_count(observation_timestamp: int) -> int:
 def _get_calculated_mp(avg: float, delta: float, cur_day: int) -> float:
     d_min = 28  # Для северных широт
     return avg - delta * math.cos(
-        (2 * math.pi * (cur_day - d_min)) / 365.25
+        math.radians(
+            (2 * math.pi * (cur_day - d_min)) / 365.25
+        )
     )
 
 
@@ -54,7 +56,9 @@ def get_calculated_metrological_params(cur_day: int) -> CalculatedMP:
 
 
 def _get_m_el(elevation: float) -> float:
-    _base_el = 1.001 / math.sqrt(0.002001 + math.sin(elevation)**2)
+    _base_el = 1.001 / math.sqrt(0.002001 + math.sin(
+        math.radians(elevation)
+    )**2)
 
     m_elevation = _base_el
     if 2 <= elevation <= 4:
