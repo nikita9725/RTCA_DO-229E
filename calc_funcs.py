@@ -80,9 +80,9 @@ def get_tropospheric_correction(calc_mp: CalculatedMP,
                                 m_el: MElevation) -> TroposphericCorrection:
     ip = InputData()
 
-    z_hyd = (10 ** 6 * ip.k1 * ip.r_d * calc_mp.p) / ip.g_m
+    z_hyd = (10 ** -6 * ip.k1 * ip.r_d * calc_mp.p) / ip.g_m
     z_wet = (
-                (10 ** 6 * ip.k2 * ip.r_d) /
+                (10 ** -6 * ip.k2 * ip.r_d) /
                 ((ip.g_m * (calc_mp.lambda_ + 1)) - (calc_mp.beta * ip.r_d))
             ) * (calc_mp.e / calc_mp.t)
 
@@ -93,7 +93,7 @@ def get_tropospheric_correction(calc_mp: CalculatedMP,
             ((calc_mp.lambda_ + 1) * ip.g / ip.r_d / calc_mp.beta) - 1
     ) * z_wet
 
-    _tc_base = -(d_hyd / d_wet)
+    _tc_base = -(d_hyd + d_wet)
     tc_custom = _tc_base * m_el.custom_degrees
     tc_45_deg = _tc_base * m_el.degrees45
     tc_90_deg = _tc_base * m_el.degrees90
