@@ -97,7 +97,9 @@ def get_tropospheric_correction(calc_mp: CalculatedMP,
 
     return TroposphericCorrection(custom_degrees=tc_custom,
                                   degrees45=tc_45_deg,
-                                  degrees90=tc_90_deg)
+                                  degrees90=tc_90_deg,
+                                  z_wet=z_wet,
+                                  d_wet=d_wet)
 
 
 def get_square_deviation(m_el: MElevation) -> SquareDeviation:

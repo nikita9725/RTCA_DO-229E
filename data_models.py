@@ -41,8 +41,13 @@ class MElevation(DegreesBase):
 @dataclass
 class TroposphericCorrection(DegreesBase):
     """Класс с расчитанным значением тропосферной поправки"""
+    z_wet: float
+    d_wet: float
+
     def __repr__(self):
         return ('Расчёт тропосферной поправки для углов места:\n'
+                f'z_wet: {self.z_wet}\n'
+                f'd_wet: {self.d_wet}\n'
                 f'{InputData.elevation} град: {self.custom_degrees} м\n'
                 f'45 град: {self.degrees45} м\n'
                 f'90 град: {self.degrees90} м\n')
