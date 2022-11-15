@@ -39,10 +39,7 @@ def current_day_count(observation_timestamp: int) -> int:
 def _get_calculated_mp(avg: float, delta: float, cur_day: int) -> float:
     d_min = 28  # Для северных широт
     return avg - delta * math.cos(
-        math.radians(
-            (2 * math.pi * (cur_day - d_min)) / 365.25
-        )
-    )
+            (2 * math.pi * (cur_day - d_min)) / 365.25)
 
 
 def get_calculated_metrological_params(cur_day: int) -> CalculatedMP:
